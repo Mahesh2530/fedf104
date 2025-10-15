@@ -1,0 +1,43 @@
+/* Navbar styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #e0f4fc; /* Light blue */
+  padding: 14px 30px;
+  border-bottom: 1px solid #bce3fa;
+}
+
+.app-name {
+  font-weight: 700;
+  color: #2496ed;
+  margin-right: 34px;
+  font-size: 1.35rem;
+  letter-spacing: 2px;
+}
+
+.navbar a {
+  margin-right: 24px;
+  color: #2496ed;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.navbar a:hover {
+  color: #1171b7;
+  text-decoration: underline;
+}
+
+/* Course Page: Pink */
+.courses-page {
+  background: #ffd1ea;
+  min-height: 100vh;
+  padding: 32px;
+}
+
+/* Contact Page: Yellow */
+.contact-page {
+  background: #fff5ba;
+  min-height: 100vh;
+  padding: 32px;
+}
