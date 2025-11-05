@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout</title>
+    <style>
+        .container {
+            display: grid;
+            grid-row: 10% 80% 10%;
+            grid-column: 30% 35% 35%;
+            height: 100vh;
+        }
+
+        .hd {
+            background-color: rgb(188, 165, 152);
+            grid-auto-rows: 1/4;
+            grid-column: 1 / 4;
+
+            height: 20vh;
+        }
+
+        .lt {
+            background-color: aquamarine;
+            grid-row: 2 / 3;
+            grid-column: 1 / 2;
+            height: 80vh;
+        }
+
+        .ms {
+            background-color: blueviolet;
+            grid-row: 2 / 3;
+            grid-column: 2 / 3;
+            height: 80vh;
+        }
+
+        .ft {
+            background-color: hotpink;
+            grid-row: 2 / 3;
+            grid-column: 3 / 4;
+            height: 80vh;
+        }
+
+        .foot {
+            background-color: darkgreen;
+            grid-row: 3 / 4;
+            grid-column: 1 / 4;
+            height: 20vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hd">Header</div>
+        <div class="lt">Left Sidebar</div>
+        <div class="ms">Main Section</div>
+        <div class="ft">Right Sidebar</div>
+        <div class="foot">Footer</div>
+    </div>
+</body>
+</html>

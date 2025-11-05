@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class time table</title>
+    <style>
+        table{
+            border-collapse: separate ;
+            background-color: rgb(147, 166, 156);
+            text-align: center;
+        }
+        .ln{
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+        }
+        .s1{
+            color: rgb(19, 226, 19);
+        }
+        .s2{
+            color: blue;
+        }
+        .s3{
+            color: brown;
+        }
+        .s4{
+            color: rgb(182, 80, 255);
+        }
+        .s5{
+            color: lightpink;
+        }
+
+    </style>
+</head>
+<body>
+    <table border="2">
+        <caption>Rishi time table</caption>
+        <tr>
+            <th>Day/Time</th>
+            <th>9.20 - 10.10</th>
+            <th>10.10-11.00</th>
+            <th>11.10 - 12.00</th>
+            <th>12.00 - 1.50</th>
+            <th>1.50 - 2.40</th>
+            <th>2.40 - 3.30</th>
+            <th>3.30 - 4.20</th>
+            <th>4.20 - 5.30</th>
+        </tr>
+        <tr><td>Monday</td>
+        <td>---</td>
+        <td class="s1">Sub1</td>
+        <td class="s2">sub2</td>
+        <td class="s3">sub3</td>
+        <td rowspan="6" class="ln">lunch</td>
+        <td class="s4">sub4</td>
+        <td class="s5">sub5</td>
+        <td>Games</td></tr>
+
+        <tr><td>Tuesday</td>
+        <td class="s1">Sub1</td>
+        <td class="s2">sub2</td>
+        <td>Break</td>
+        <td class="s3">sub3</td>
+        <td class="s4">sub4</td>
+        <td class="s5">sub5</td>
+        <td>Meeting</td></tr>
+
+         <tr><td>Wednesday</td>
+        <td class="s1">Sub1</td>
+        <td class="s2">sub2</td>
+        <td>Break</td>
+        <td class="s3">sub3</td>
+
+        <td colspan="3">lab</td>
+        </tr>
+
+         <tr><td>Thursday</td>
+        <td class="s1">Sub1</td>
+        <td class="s2">sub2</td>
+        <td>Break</td>
+        <td class="s3">sub3</td>
+        <td class="s4">sub4</td>
+        <td class="s5">sub5</td>
+        <td>Meeting</td></tr>
+
+         <tr><td>Friday</td>
+        <td class="s1">Sub1</td>
+        <td class="s1">Sub1</td>
+        <td class="s2">sub2</td>
+        <td class="s3">sub3</td>
+        <td class="s4">sub4</td>
+        <td class="s5">sub5</td>
+        <td>Meeting</td></tr>
+
+         <tr><td>Saturday</td>
+        <td class="s1">Sub1</td>
+        <td colspan="2">Seminar</td>
+        <td class="s3">sub3</td>
+        <td class="s3">sub3</td>
+        <td class="s4">sub4</td>
+        <td class="s5">sub5</td></tr>
+    </table>
+    
+</body>
+</html>
