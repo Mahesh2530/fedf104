@@ -1,4 +1,4 @@
-  import { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
@@ -15,7 +15,13 @@ const SignIn = () => {
     if (user) {
       sessionStorage.setItem("user", JSON.stringify(user));
       alert("Login successful!");
-      navigate("/dashboard");
+
+      // ✅ Role-based redirection
+      if (user.role === "admin") {
+        navigate("/dashboard");
+      } else {
+        navigate("/products"); // New Products page for shopping
+      }
     } else {
       alert("Invalid credentials!");
     }
