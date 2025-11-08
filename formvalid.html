@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation Example</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        form { max-width: 400px; margin: auto; text-align: left; }
+        label { display: block; margin-top: 15px; text-align: left; }
+        input, textarea, select { width: 100%; padding: 8px; margin-top: 5px; }
+        .phone-group { display: flex; gap: 8px; }
+        .phone-group input { width: 50%; }
+        textarea { height: 80px; }
+        .error { color: red; font-size: 0.9em; }
+        button:disabled { background: #ccc; }
+    </style>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form id="myForm" novalidate>
+        <label>Username
+            <input type="text" id="username" required>
+            <span class="error" id="usernameError"></span>
+        </label>
+        <label>Password
+            <input type="password" id="password" required>
+            <span class="error" id="passwordError"></span>
+        </label>
+        <label>Re-enter Password
+            <input type="password" id="confirmPassword" required>
+            <span class="error" id="confirmPasswordError"></span>
+        </label>
+        <label>Email
+            <input type="email" id="email" required>
+            <span class="error" id="emailError"></span>
+        </label>
+        <label>Phone Number
+            <div class="phone-group">
+                <input type="text" id="countryCode" placeholder="+91" required>
+                <input type="tel" id="mobile" placeholder="Mobile Number" required>
+            </div>
+            <span class="error" id="phoneError"></span>
+        </label>
+        <label>Date of Birth
+            <input type="date" id="dob" required>
+            <span class="error" id="dobError"></span>
+        </label>
+        <label>Address
+            <textarea id="address" required></textarea>
+            <span class="error" id="addressError"></span>
+        </label>
+        <label>Pincode
+            <input type="text" id="pincode" required maxlength="6">
+            <span class="error" id="pincodeError"></span>
+        </label>
+        <button type="submit" id="submitBtn" disabled>Submit</button>
+    </form>
+    <script>
+        const form = document.getElementById('myForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        function validate() {
+            let valid = true;
+
+            // Username: at least 3 characters
+            const username = document.getElementById('username').value.trim();
+            if (username.length < 3) {
+                document.getElementById('usernameError').textContent = "Username must be at least 3 characters.";
+                valid = false;
+            } else {
+                document.getElementById('usernameError').textContent = "";
+            }
+
+            // Password: at least 6 characters, 1 uppercase, 1 lowercase, 1 number, 1 special char
+            const password = document.getElementById('password').value;
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
+            if (!passwordPattern.test(password)) {
+                document.getElementById('passwordError').textContent =
+                    "Password must be 6+ chars, include upper, lower, number, and special char.";
+                valid = false;
+            } else {
+                document.getElementById('passwordError').textContent = "";
+            }
+
+            // Confirm Password: must match password
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (confirmPassword !== password || confirmPassword === "") {
+                document.getElementById('confirmPasswordError').textContent = "Passwords do not match.";
+                valid = false;
+            } else {
+                document.getElementById('confirmPasswordError').textContent = "";
+            }
+
+            // Email: valid format
+            const email = document.getElementById('email').value.trim();
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                document.getElementById('emailError').textContent = "Enter a valid email address.";
+                valid = false;
+            } else {
+                document.getElementById('emailError').textContent = "";
+            }
+
+            // Phone: country code starts with + and 1-4 digits, mobile is 10 digits
+            const countryCode = document.getElementById('countryCode').value.trim();
+            const mobile = document.getElementById('mobile').value.trim();
+            const countryCodePattern = /^\+\d{1,4}$/;
+            const mobilePattern = /^\d{10}$/;
+            if (!countryCodePattern.test(countryCode) || !mobilePattern.test(mobile)) {
+                document.getElementById('phoneError').textContent = "Enter valid country code (e.g. +91) and 10-digit mobile number.";
+                valid = false;
+            } else {
+                document.getElementById('phoneError').textContent = "";
+            }
+
+            // Date of Birth: must be selected and not in future
+            const dob = document.getElementById('dob').value;
+            if (!dob) {
+                document.getElementById('dobError').textContent = "Select your date of birth.";
+                valid = false;
+            } else if (new Date(dob) > new Date()) {
+                document.getElementById('dobError').textContent = "Date of birth cannot be in the future.";
+                valid = false;
+            } else {
+                document.getElementById('dobError').textContent = "";
+            }
+
+            // Address: at least 5 characters
+            const address = document.getElementById('address').value.trim();
+            if (address.length < 5) {
+                document.getElementById('addressError').textContent = "Address must be at least 5 characters.";
+                valid = false;
+            } else {
+                document.getElementById('addressError').textContent = "";
+            }
+
+            // Pincode: exactly 6 digits
+            const pincode = document.getElementById('pincode').value.trim();
+            if (!/^\d{6}$/.test(pincode)) {
+                document.getElementById('pincodeError').textContent = "Enter a valid 6-digit pincode.";
+                valid = false;
+            } else {
+                document.getElementById('pincodeError').textContent = "";
+            }
+
+            submitBtn.disabled = !valid;
+            return valid;
+        }
+
+        form.addEventListener('input', validate);
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (validate()) {
+                alert('Form submitted successfully!');
+                form.reset();
+                submitBtn.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
